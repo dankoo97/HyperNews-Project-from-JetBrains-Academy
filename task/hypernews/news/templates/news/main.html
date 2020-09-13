@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HyperNews</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+
+<form action="" method="get">
+    {{ search }}
+    <input type="submit" value="Search">
+</form>
+
+{% for date in dates %}
+    <h4>{{ date }}</h4>
+
+
+    <ul>
+        {% for article in news %}
+            {% if date in article.created %}
+                <li><a target="_blank" href="/news/{{ article.link }}/">{{ article.title }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% endfor %}
+
+<a target="_blank" href="/news/create/">
+    <div>
+        Add article
+    </div>
+</a>
+<a href="/news/">
+    <div>Home</div>
+</a>
+</body>
+</html>
